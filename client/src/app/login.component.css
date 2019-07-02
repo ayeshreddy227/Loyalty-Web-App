@@ -1,0 +1,8 @@
+md-input-container label {
+  color: red;
+}
+
+/* When the input is focused */
+md-input-container.md-input-focused label {
+  color: red;
+}

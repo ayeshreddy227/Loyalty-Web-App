@@ -1,0 +1,139 @@
+<div class="main-content" z-index="-1">
+        
+<div class="container-fluid">
+  
+        <div class="row">
+          <div style="float:right" >
+            <button  class="btn btn-danger btn-block" data-toggle="modal" (click)="createoffer()" >Create Offer</button>
+          </div>    
+            <!-- <div *ngIf = "currentOffer.name!=undefined"class="col-md-2" style="float:right" >
+                        <button disabled class="btn btn-danger btn-block" data-toggle="modal" (click)="edit()" >{{editstatus}}</button>
+                        <button disabled class="btn btn-danger btn-block" data-toggle="modal" (click)="submit()" >Create Offer</button>
+
+                    </div>
+                    <div *ngIf = "currentOffer.name==undefined"class="col-md-2" style="float:right" >
+                            <button  class="btn btn-danger btn-block" data-toggle="modal" (click)="edit()" >{{editstatus}}</button>
+                            <button  class="btn btn-danger btn-block" data-toggle="modal" (click)="submit()" >Create Offer</button>
+                        </div> -->
+                </div>
+    <div class="row">
+        
+        <div class="col-md-4" *ngFor="let offer of offers;let i = index">
+            <div class="card">
+                <div class="card-header" data-background-color="red">
+                        <!-- <div class="row" *ngIf="offer.enabled==true">
+                                <div class="col-md-4" style="float:left">
+                                        <button  class="btn btn-danger "  (click)="submit()">Delete</button>
+                                </div>
+                                <div class="col-md-4" style="float:right">
+                                    <button style="text-align:center" class="btn btn-clear"  (click)="submit()" >SAVE</button>
+                                </div>
+                                </div>   -->
+                    <h3  class="title " style="text-align:center" >{{offer.name}}</h3>
+                    <!-- <button class=" col-md-4 btn btn-danger hoverbtn" >Edit</button> -->
+                    <button type="submit" class="btn btn-white btn-round btn-just-icon hoverbtn" (click)="edit(i)">
+                        <i class="material-icons">edit</i><div class="ripple-container"></div>
+                    </button>
+                    
+                </div>
+                <div class="card-content">
+                    <div id="typography">
+                            <mat-input-container  dividerColor="accent">
+                                    <input disabled type="text" matInput placeholder="Offer Description" [(ngModel)] = "offer.name"  name="first">
+                                    </mat-input-container >
+                            <mat-input-container  dividerColor="accent">
+                                    <input disabled type="text" matInput placeholder="Offer Description" [(ngModel)] = "offer.offer_data.description"  name="first">
+                                    </mat-input-container >
+                            <mat-input-container  dividerColor="accent">
+                                    <input disabled type="text" matInput placeholder="Points" [(ngModel)] = "offer.offer_data.rewardpoints"  name="first" >
+                                    </mat-input-container >
+                                   
+                                    <mat-form-field>
+                                        <input disabled matInput [matDatepicker]="picker1" placeholder="Offer Valid from" [(ngModel)] = "offer.valid_from"  name="first">
+                                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker1></mat-datepicker>
+                                        </mat-form-field>
+                                    <mat-form-field>
+                                            <input disabled matInput [matDatepicker]="picker2" placeholder="Offer Valid till" [(ngModel)] = "offer.valid_to"  name="first">
+                                            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                                <mat-datepicker #picker2></mat-datepicker>
+                                    </mat-form-field>
+                                    
+ 
+                                        
+                        
+                    </div>
+                    <button *ngIf="offer.edit==true" class="btn btn-danger" (click)="delete(i)" >Detele</button>
+                    <button *ngIf="offer.edit==true" class="btn " (click)="save(i)" >Save</button>
+                </div>
+                
+            </div>
+            
+        </div>
+        
+    </div>
+<button (click)="openmodal()"></button>
+<!-- </div>
+</div>offersModal
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#offersModal" data-whatever="@mdo">Open modal for @mdo</button> -->
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#offersModal" data-whatever="@fat">Open modal for @fat</button> -->
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#offersModal" data-whatever="@getbootstrap">Open modal for @getbootstrap</button> -->
+
+<div  class="modal fade" id="offersModal" tabindex="-1" z-index=10 role="dialog" aria-labelledby="offersModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+  
+          <div>
+            <h5 class="modal-title col-sm-4" id="offersModalLabel">Edit Your Reward</h5>
+          </div>
+          
+            <!-- <button type="button" class="close" data-dismiss="modal" aria-label ="Close" (click)="close()">
+              <span aria-hidden="true">&times;</span>
+            </button> -->
+            
+        
+    
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="form-control-label">Offer Name</label>
+            <input  type="text" class="form-control" id="recipient-name" [(ngModel)] = "currentOffer.name"  name="first" #name>
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="form-control-label">Offer Description</label>
+            <input type="text" class="form-control" id="recipient-name" [(ngModel)] = "currentOffer.offer_data.description"  name="description" #description>
+          </div>
+          <div class="form-group" >
+                <label for="message-text" class="form-control-label">Points</label>
+                <input type="text" class="form-control" id="recipient-name"  [(ngModel)] = "currentOffer.offer_data.rewardpoints"  name="rewardpoints" #points>
+              </div>
+              <div class="datetimepicker" >
+              <mat-form-field >
+                    <input matInput [matDatepicker]="picker1" placeholder="Promo Start date" [(ngModel)] = "currentOffer.valid_from" name="valid_from">
+                    <mat-datepicker-toggle matSuffix [for]="picker1" style="z-index:10000000"></mat-datepicker-toggle>
+                     <mat-datepicker #picker1></mat-datepicker>
+                    </mat-form-field>
+
+                    <mat-form-field >
+                          <input matInput [matDatepicker]="picker2" placeholder="Promo End date" [(ngModel)] = "currentOffer.valid_to" name="valid_to">
+                          <mat-datepicker-toggle matSuffix [for]="picker2" style="z-index:10000000"></mat-datepicker-toggle>
+                           <mat-datepicker #picker2></mat-datepicker>
+                          </mat-form-field>
+                      </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+          <div style="float:left">
+              <button type="submit" class="col-sm-1 btn btn-danger btn-round btn-just-icon" (click)="delete()">
+                  <i class="material-icons">delete</i><div class="ripple-container"></div>
+              </button>
+          </div>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="submit()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+

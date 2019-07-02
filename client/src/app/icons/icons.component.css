@@ -1,0 +1,38 @@
+.wrapper {
+  padding: 10px;
+}
+
+.image--cover {
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  margin: 20px;
+
+  object-fit: cover;
+  object-position: center right;
+}
+
+body{padding-top:30px;}
+
+.glyphicon {  margin-bottom: 10px;margin-right: 10px;}
+
+small {
+display: block;
+line-height: 1.428571429;
+color: #999;
+}
+imgcls{
+  height:170px!important;
+  width:auto!important;
+  max-width:500px!important;
+}
+
+/* Important part */
+.modal-dialog{
+  overflow-y: initial !important
+}
+.modal-body{
+  height: 400px;
+  width: 100%;
+  overflow-y: auto;
+}

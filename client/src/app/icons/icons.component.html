@@ -1,0 +1,114 @@
+<div class="main-content">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header" data-background-color="red">
+                    <h4 class="title">App Details</h4>
+                    <p class="category">Complete your app details</p>
+                </div>
+                <div class="card-content">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-3">
+                            <img class="wrapper" src={{agentData.primary_image}} />
+                            </div>
+                            <div class="col-md-9">
+                                <div class="row">
+
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-4">
+                                        <mat-input-container  dividerColor="accent">
+                                        <input type="email" [(ngModel)]="agentData.email" name = "email" matInput placeholder="Email" >
+                                        </mat-input-container >
+                                    </div>
+                                    <div class="col-md-7">
+                                        <mat-input-container  dividerColor="accent">
+                                        <input type="tel" [(ngModel)] = "agentData.phone" name = "phone" matInput placeholder="Phone Number" >
+                                        </mat-input-container >
+                                    </div>
+                                </div>
+                            <div class="row">
+                                <div class="col-md-1">
+                                    
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-input-container  dividerColor="accent">
+                                    <input type="text" [(ngModel)] = "agentData.name" name = "name" matInput placeholder="Name" >
+                                    </mat-input-container >
+                                </div>
+                                <div class="col-md-7">
+                                    <mat-input-container  dividerColor="accent">
+                                    <input type="text" [(ngModel)] = "agentData.category" name = "category" matInput placeholder="Category" >
+                                    </mat-input-container >
+                                </div>
+                            </div>
+                           
+                            <div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-4">
+                                    <mat-input-container  dividerColor="accent">
+                                            <input type="time" [(ngModel)] = "agentData.starttime" name = "open" matInput placeholder="Open Time" >
+                                    </mat-input-container >
+    
+                                </div>
+                                <div class="col-md-7">
+                                        <mat-input-container  dividerColor="accent">
+                                                <input type="time" [(ngModel)] = "agentData.endtime" name = "close" matInput placeholder="Close Time" >
+                                        </mat-input-container >
+                                </div>
+                            </div>
+                            </div>
+                            
+                        </div>
+                        <div ng-controller = "myCtrl">
+                                <input disabled type="file" id="avatar" (change)="onFileChange($event)" name='myfile' #fileInput>
+                                <!-- <input type="file" ng2FileSelect  [uploader]="uploader" />
+                            <input type = "file" [(ngModel)] = "filepath" (click)="uploadFile($event)" name = "file" file-model = "myFile"/> -->
+                            <!-- <button class="btn" (click) = "uploadFile($event)">upload me</button> -->
+                         </div>
+                         <!-- <button class="btn" (click)="uploadFile()">upload me</button> -->
+                        <!-- <button class="btn" ng-click="showConfirm($event)">
+                            Tab Dialog
+                          </button> -->
+                        <button type="submit" class="btn btn-danger pull-right" (click)="updateAgentProfile()">Update Profile</button>
+                       <button (click)="openmodal()" class="btn">Open</button>
+
+            
+
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+</div>
+
+<div class="modal fade" id="offersModal" tabindex="-1" z-index=10 role="dialog" aria-labelledby="offersModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="offersModalLabel">Select Images</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label ="Close" (click)="close()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+                <!-- <div class="imgcls" *ngFor="let imgs of backgroundimgs"> -->
+            <img class="imgcls" src={{currentimg}} style="width:100%"/>
+            <!-- </div> -->
+            <button type="button" [disabled]="currentimgcount == backgroundimgs.length - 1" class="btn btn-primary pull-right" (click)="nextImg()">Next</button>
+            <button type="button" [disabled]="currentimgcount == 0" class="btn btn-primary pull-right" (click)="prevImg()">Prev</button>
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="Select()">Select</button>
+        </div>
+      </div>
+    </div>
+  </div>

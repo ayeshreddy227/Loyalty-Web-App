@@ -1,0 +1,37 @@
+.modal-backdrop {
+    z-index: -1;
+  }
+.mat-datepicker-content {
+    z-index: 1080;
+}
+/* .modal-open .modal.modal-allow-overflow {
+    overflow: visible;
+} */
+::ng-deep .cdk-overlay-container{
+    z-index: 1200 !important;
+}
+/* cardcls:hover + .gg, .gg:hover {
+    display: inline-block;
+} */
+
+.card:hover div {
+    /* Change the filter in here */
+  }
+.card:hover .hoverbtn {
+    display: inline-block;
+  }
+.hoverbtn {
+    display: none;
+    line-height: 12px;
+     /* width: 18px; */
+     font-size: 8pt;
+     font-family: tahoma;
+     margin-top: -4%;
+     margin-right: 8%;
+     position:absolute;
+     top:0;
+     right:0;
+}
+.modal-header{
+    text-align: center;
+}
