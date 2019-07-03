@@ -7,8 +7,6 @@ from api.models.background_imgs import Backgroundimages
 from api.libraries.utilities import *
 import boto3
 import pytz
-#aws_access_key = "AKIAJD7KAVA3KDSUOLPQ"
-#aws_secret_key = "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"
 aws_access_key = ""
 aws_secret_key = ""
 s3 = boto3.client("s3", aws_access_key_id=aws_access_key,
